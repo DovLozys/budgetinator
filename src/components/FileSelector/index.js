@@ -17,9 +17,9 @@ function FileSelector() {
 		}
 	}
 
-	return(
+	return (
 		<form>
-			<label htmlFor="budget-data-file">Select a file:</label>
+			<label htmlFor="budget-data-file">Select a file: </label>
 			<input
 				type="file"
 				id="budget-data-file"
