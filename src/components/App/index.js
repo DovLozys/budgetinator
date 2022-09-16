@@ -1,13 +1,11 @@
+import FileSelector from '../FileSelector';
+
 function App() {
 	return (
 		<>
 			<header>
 				<h1>Budgetinator</h1>
-				<form>
-					<label for="budget-data-file">Select a file:</label>
-					<input type="file" id="budget-data-file" name="budget-data-file" /><br /><br />
-					<input type="submit" value="Submit" />
-				</form>
+				<FileSelector />
 			</header>
 			<div className="row">
 				<div className="column side">
