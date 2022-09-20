@@ -1,11 +1,14 @@
+import { useState } from 'react';
+
 import FileSelector from '../FileSelector';
 
 function App() {
+	const [categories, setCategories] = useState([]);
 	return (
 		<>
 			<header>
 				<h1>Budgetinator</h1>
-				<FileSelector />
+				<FileSelector setCategories={setCategories}/>
 			</header>
 			<div className="row">
 				<div className="column side">
@@ -16,6 +19,7 @@ function App() {
 					<div>Month charts</div>
 				</div>
 			</div>
+			DEBUG: {categories}
 		</>
 	);
 }
