@@ -1,6 +1,16 @@
 import { read, utils } from 'xlsx';
 
-function FileSelector() {
+function FileSelector(props) {
+	function getCategories(rowArray) {
+		let listOfCategories = [];
+		for (let i = 0; i < rowArray.length; i++) {
+			if (!listOfCategories.includes(rowArray[i]['Category'])) {
+				listOfCategories.push(rowArray[i]['Category']);
+			}
+		}
+		return listOfCategories;
+	}
+
 	function onChangeHandler(event) {
 		event.preventDefault();
 		if (event.target.files) {
@@ -10,8 +20,8 @@ function FileSelector() {
 				const workbook = read(fileContents, { type: "array" });
 				const sheetName = workbook.SheetNames[0];
 				const worksheet = workbook.Sheets[sheetName];
-				const json = utils.sheet_to_json(worksheet);
-				console.log(json);
+				const rowArray = utils.sheet_to_json(worksheet);
+				props.setCategories(getCategories(rowArray));
 			}
 			reader.readAsArrayBuffer(event.target.files[0]);
 		}
