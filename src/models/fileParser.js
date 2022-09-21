@@ -1,11 +1,18 @@
 function getCategories(arrayOfRows) {
-	let listOfCategories = [];
+	let arrayOfCategories = [];
 	for (let i = 0; i < arrayOfRows.length; i++) {
-		if (!listOfCategories.includes(arrayOfRows[i]['Category'])) {
-			listOfCategories.push(arrayOfRows[i]['Category']);
+		if (!arrayOfCategories.includes(arrayOfRows[i]['Category'])) {
+			arrayOfCategories.push(arrayOfRows[i]['Category']);
 		}
 	}
-	return listOfCategories;
+	return arrayOfCategories;
+}
+
+function getMonths(arrayOfRows) {
+	let arrayOfMonths = [];
+	//TODO: month filtering I guess
+	console.log(arrayOfMonths);
+	//return arrayOfMonths;
 }
 
 export { getCategories };
