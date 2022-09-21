@@ -1,6 +1,5 @@
 import { useState } from 'react';
-
-import FileSelector from '../FileSelector';
+import { FileSelector } from '../FileSelector';
 
 function App() {
 	const [categories, setCategories] = useState([]);
@@ -24,4 +23,4 @@ function App() {
 	);
 }
 
-export default App;
+export { App };
