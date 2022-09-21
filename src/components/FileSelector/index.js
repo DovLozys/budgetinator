@@ -1,5 +1,4 @@
 import { read, utils } from 'xlsx';
-import { getCategories } from '../../models/fileParser';
 
 function FileSelector(props) {
 	function onChangeHandler(event) {
@@ -12,7 +11,7 @@ function FileSelector(props) {
 				const sheetName = workbook.SheetNames[0];
 				const worksheet = workbook.Sheets[sheetName];
 				const arrayOfRows = utils.sheet_to_json(worksheet);
-				props.setCategories(getCategories(arrayOfRows));
+				props.setStatementFile(arrayOfRows);
 			}
 			reader.readAsArrayBuffer(event.target.files[0]);
 		}

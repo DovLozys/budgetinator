@@ -2,12 +2,12 @@ import { useState } from 'react';
 import { FileSelector } from '../FileSelector';
 
 function App() {
-	const [categories, setCategories] = useState([]);
+	const [statementFile, setStatementFile] = useState([]);
 	return (
 		<>
 			<header>
 				<h1>Budgetinator</h1>
-				<FileSelector setCategories={setCategories}/>
+				<FileSelector setStatementFile={setStatementFile}/>
 			</header>
 			<div className="row">
 				<div className="column side">
@@ -18,7 +18,7 @@ function App() {
 					<div>Month charts</div>
 				</div>
 			</div>
-			DEBUG: {categories}
+			DEBUG: {statementFile.length}
 		</>
 	);
 }
