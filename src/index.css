@@ -20,7 +20,7 @@ h1, form {
 	display: inline;
 }
 
-form {
+#file-selector {
 	float: right;
 }
 

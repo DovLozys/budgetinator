@@ -18,15 +18,9 @@ function FileSelector(props) {
 	}
 
 	return (
-		<form>
-			<label htmlFor="budget-data-file">Select a file: </label>
-			<input
-				type="file"
-				id="budget-data-file"
-				name="budget-data-file"
-				onChange={onChangeHandler}
-			/>
-		</form>
+		<label id="file-selector">Select a file:
+			<input type="file" onChange={onChangeHandler} />
+		</label>
 	);
 }
 
