@@ -1,8 +1,4 @@
-import { useState } from 'react';
-
-function MonthSelectorBox() {
-	const [monthRange, setMonthRange] = useState([0, 0]);
-
+function MonthSelectorBox({ setMonthRange }) {
 	function onChangeHandler(event) {
 		const options = event.target.selectedOptions;
 		if (options.length === 1) {
@@ -29,7 +25,6 @@ function MonthSelectorBox() {
 				<option value="10">November</option>
 				<option value="11">December</option>
 			</select>
-			DEBUG: {monthRange}
 		</label>
 	);
 }
