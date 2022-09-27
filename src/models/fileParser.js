@@ -8,6 +8,26 @@ function getCategories(arrayOfRows) {
 	return arrayOfCategories;
 }
 
+function getExpenses(arrayOfRows) {
+	let arrayOfExpenses = [];
+	for (let i = 0; i < arrayOfRows.length; i++) {
+		if (arrayOfRows[i]['Type'] === 'DEBIT') {
+			arrayOfExpenses.push(arrayOfRows[i]['Amount']);
+		}
+	}
+	return arrayOfExpenses;
+}
+
+function getIncomes(arrayOfRows) {
+	let arrayOfIncomes = [];
+	for (let i = 0; i < arrayOfRows.length; i++) {
+		if (arrayOfRows[i]['Type'] === 'CREDIT') {
+			arrayOfIncomes.push(arrayOfRows[i]['Amount']);
+		}
+	}
+	return arrayOfIncomes;
+}
+
 function getMonths(arrayOfRows) {
 	let arrayOfMonths = [];
 	//TODO: month filtering I guess
@@ -15,4 +35,4 @@ function getMonths(arrayOfRows) {
 	//return arrayOfMonths;
 }
 
-export { getCategories };
+export { getCategories, getExpenses, getIncomes };
