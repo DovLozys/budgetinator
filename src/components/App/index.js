@@ -16,6 +16,8 @@ function App() {
 		});
 	}
 
+	const isSelectionMultiple = monthRange[0] < monthRange[1];
+
 	return (
 		<>
 			<header>
@@ -28,9 +30,17 @@ function App() {
 				</div>
 				<div className="column main">
 					<div>
-						<h1>Summary for {getMonthName(monthRange[0])} to {getMonthName(monthRange[1])}</h1>
+						<h1>
+							Summary for {getMonthName(monthRange[0])}
+							{isSelectionMultiple && " to " + getMonthName(monthRange[1])}
+						</h1>
 					</div>
-					<div>Charts for {getMonthName(monthRange[0])} to {getMonthName(monthRange[1])}</div>
+					<div>
+						<h2>
+							Charts for {getMonthName(monthRange[0])}
+							{isSelectionMultiple && " to " + getMonthName(monthRange[1])}
+						</h2>
+					</div>
 				</div>
 			</div>
 		</>
