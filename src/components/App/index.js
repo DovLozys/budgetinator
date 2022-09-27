@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { FileSelector } from '../FileSelector';
 import { MonthSelectorBox } from '../MonthSelectorBox';
 
-import { getExpenses, getIncomes } from '../../models/fileParser';
+import { getDebits, getCredits } from '../../models/fileParser';
 
 function App() {
 	const [statementFile, setStatementFile] = useState([]);
@@ -36,8 +36,8 @@ function App() {
 							Summary for {getMonthName(monthRange[0])}
 							{isSelectionMultiple && " to " + getMonthName(monthRange[1])}
 						</h1>
-						<p>Total expenses: {getExpenses(statementFile).reduce((partialSum, amount) => partialSum + amount, 0)}</p>
-						<p>Total income: {getIncomes(statementFile).reduce((partialSum, amount) => partialSum + amount, 0)}</p>
+						<p>Total debits: {getDebits(statementFile).reduce((partialSum, amount) => partialSum + amount, 0)}</p>
+						<p>Total credits: {getCredits(statementFile).reduce((partialSum, amount) => partialSum + amount, 0)}</p>
 					</div>
 					<div>
 						<h2>

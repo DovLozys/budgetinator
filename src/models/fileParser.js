@@ -8,24 +8,24 @@ function getCategories(arrayOfRows) {
 	return arrayOfCategories;
 }
 
-function getExpenses(arrayOfRows) {
-	let arrayOfExpenses = [];
+function getDebits(arrayOfRows) {
+	let arrayOfDebits = [];
 	for (let i = 0; i < arrayOfRows.length; i++) {
 		if (arrayOfRows[i]['Type'] === 'DEBIT') {
-			arrayOfExpenses.push(arrayOfRows[i]['Amount']);
+			arrayOfDebits.push(arrayOfRows[i]['Amount']);
 		}
 	}
-	return arrayOfExpenses;
+	return arrayOfDebits;
 }
 
-function getIncomes(arrayOfRows) {
-	let arrayOfIncomes = [];
+function getCredits(arrayOfRows) {
+	let arrayOfCredits = [];
 	for (let i = 0; i < arrayOfRows.length; i++) {
 		if (arrayOfRows[i]['Type'] === 'CREDIT') {
-			arrayOfIncomes.push(arrayOfRows[i]['Amount']);
+			arrayOfCredits.push(arrayOfRows[i]['Amount']);
 		}
 	}
-	return arrayOfIncomes;
+	return arrayOfCredits;
 }
 
 function getMonths(arrayOfRows) {
@@ -35,4 +35,4 @@ function getMonths(arrayOfRows) {
 	//return arrayOfMonths;
 }
 
-export { getCategories, getExpenses, getIncomes };
+export { getCategories, getDebits, getCredits };
