@@ -1,11 +1,8 @@
 function MonthSelectorBox({ setMonthRange }) {
 	function onChangeHandler(event) {
 		const options = event.target.selectedOptions;
-		if (options.length === 1) {
-			setMonthRange([options[0].value, options[0].value]);
-		} else {
-			setMonthRange([options[0].value, options[options.length - 1].value]);
-		}
+		if (options.length < 1) return;
+		setMonthRange([ Number(options[0].value), Number(options[options.length - 1].value) ]);
 	}
 
 	return (
