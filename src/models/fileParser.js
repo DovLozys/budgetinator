@@ -28,11 +28,4 @@ function getCredits(arrayOfRows) {
 	return arrayOfCredits;
 }
 
-function getMonths(arrayOfRows) {
-	let arrayOfMonths = [];
-	//TODO: month filtering I guess
-	console.log(arrayOfMonths);
-	//return arrayOfMonths;
-}
-
 export { getCategories, getDebits, getCredits };
