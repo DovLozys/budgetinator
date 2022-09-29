@@ -1,4 +1,4 @@
-function MonthSelectorBox({ setMonthRange }) {
+function MonthSelectorPanel({ setMonthRange }) {
 	function onChangeHandler(event) {
 		const options = event.target.selectedOptions;
 		if (options.length < 1) return;
@@ -26,4 +26,4 @@ function MonthSelectorBox({ setMonthRange }) {
 	);
 }
 
-export { MonthSelectorBox };
+export { MonthSelectorPanel };

@@ -8,7 +8,7 @@ import PieChart, {
 } from 'devextreme-react/pie-chart';
 
 import { FileSelector } from '../FileSelector';
-import { MonthSelectorBox } from '../MonthSelectorBox';
+import { MonthSelectorPanel } from '../MonthSelectorPanel';
 
 import { getDebits, getCredits } from '../../models/fileParser';
 
@@ -52,7 +52,7 @@ function App() {
 			</header>
 			<div className="row">
 				<div className="column side">
-					<MonthSelectorBox setMonthRange={setMonthRange} />
+					<MonthSelectorPanel setMonthRange={setMonthRange} />
 				</div>
 				<div className="column main">
 					<div>
