@@ -11,7 +11,7 @@ import { FileSelector } from '../FileSelector';
 import { MonthSelectorPanel } from '../MonthSelectorPanel';
 
 import { getDebits, getCredits } from '../../models/fileParser';
-import { getMonthNameFromIndex } from '../../utils/utils';
+import { getMonthNameFromIndex, modelReducer } from '../../utils/utils';
 
 import 'devextreme/dist/css/dx.light.css';
 
@@ -19,20 +19,15 @@ function App() {
 	const [statementFile, setStatementFile] = useState([]);
 	const [monthRange, setMonthRange] = useState([0, 0]);
 
-	// sums up the array returned by the model, rounds to two decimal places
-	function reducer(model) {
-		return Math.abs(Math.round(model(statementFile).reduce((partialSum, amount) => partialSum + amount, 0) * 100) / 100);
-	}
-
 	const isSelectionMultiple = monthRange[0] < monthRange[1];
 	const dataSource = [
 		{
 			type: 'credit',
-			val: reducer(getCredits),
+			val: modelReducer(getCredits, statementFile),
 		},
 		{
 			type: 'debit',
-			val: reducer(getDebits),
+			val: modelReducer(getDebits, statementFile),
 		},
 	];
 
@@ -52,8 +47,8 @@ function App() {
 							Summary for {getMonthNameFromIndex(monthRange[0])}
 							{isSelectionMultiple && " to " + getMonthNameFromIndex(monthRange[1])}
 						</h1>
-						<p>Total debits: {reducer(getDebits)}</p>
-						<p>Total credits: {reducer(getCredits)}</p>
+						<p>Total debits: {modelReducer(getDebits, statementFile)}</p>
+						<p>Total credits: {modelReducer(getCredits, statementFile)}</p>
 					</div>
 					<div>
 						<h2>
