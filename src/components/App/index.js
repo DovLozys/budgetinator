@@ -11,21 +11,13 @@ import { FileSelector } from '../FileSelector';
 import { MonthSelectorPanel } from '../MonthSelectorPanel';
 
 import { getDebits, getCredits } from '../../models/fileParser';
+import { getMonthNameFromIndex } from '../../utils/utils';
 
 import 'devextreme/dist/css/dx.light.css';
 
 function App() {
 	const [statementFile, setStatementFile] = useState([]);
 	const [monthRange, setMonthRange] = useState([0, 0]);
-
-	function getMonthName(index) {
-		const date = new Date();
-		date.setMonth(index);
-
-		return date.toLocaleString([], {
-			month: 'long',
-		});
-	}
 
 	// sums up the array returned by the model, rounds to two decimal places
 	function reducer(model) {
@@ -57,16 +49,16 @@ function App() {
 				<div className="column main">
 					<div>
 						<h1>
-							Summary for {getMonthName(monthRange[0])}
-							{isSelectionMultiple && " to " + getMonthName(monthRange[1])}
+							Summary for {getMonthNameFromIndex(monthRange[0])}
+							{isSelectionMultiple && " to " + getMonthNameFromIndex(monthRange[1])}
 						</h1>
 						<p>Total debits: {reducer(getDebits)}</p>
 						<p>Total credits: {reducer(getCredits)}</p>
 					</div>
 					<div>
 						<h2>
-							Charts for {getMonthName(monthRange[0])}
-							{isSelectionMultiple && " to " + getMonthName(monthRange[1])}
+							Charts for {getMonthNameFromIndex(monthRange[0])}
+							{isSelectionMultiple && " to " + getMonthNameFromIndex(monthRange[1])}
 						</h2>
 						<PieChart
 							id="pie"
