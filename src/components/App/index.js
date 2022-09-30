@@ -9,6 +9,7 @@ import PieChart, {
 
 import { FileSelector } from '../FileSelector';
 import { MonthSelectorPanel } from '../MonthSelectorPanel';
+import { SummaryPanel } from '../SummaryPanel';
 
 import { getDebits, getCredits } from '../../models/fileParser';
 import { getMonthNameFromIndex, modelReducer } from '../../utils/utils';
@@ -20,6 +21,7 @@ function App() {
 	const [monthRange, setMonthRange] = useState([0, 0]);
 
 	const isSelectionMultiple = monthRange[0] < monthRange[1];
+	
 	const dataSource = [
 		{
 			type: 'credit',
@@ -42,14 +44,7 @@ function App() {
 					<MonthSelectorPanel setMonthRange={setMonthRange} />
 				</div>
 				<div className="column main">
-					<div>
-						<h1>
-							Summary for {getMonthNameFromIndex(monthRange[0])}
-							{isSelectionMultiple && " to " + getMonthNameFromIndex(monthRange[1])}
-						</h1>
-						<p>Total debits: {modelReducer(getDebits, statementFile)}</p>
-						<p>Total credits: {modelReducer(getCredits, statementFile)}</p>
-					</div>
+					<SummaryPanel statementFile={statementFile} monthRange={monthRange} />
 					<div>
 						<h2>
 							Charts for {getMonthNameFromIndex(monthRange[0])}
