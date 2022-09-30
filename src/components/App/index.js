@@ -1,37 +1,15 @@
 import { useState } from 'react';
-import PieChart, {
-	Legend,
-	Series,
-	Tooltip,
-	Label,
-	Connector
-} from 'devextreme-react/pie-chart';
 
+import { ChartPanel } from '../ChartPanel';
 import { FileSelector } from '../FileSelector';
 import { MonthSelectorPanel } from '../MonthSelectorPanel';
 import { SummaryPanel } from '../SummaryPanel';
-
-import { getDebits, getCredits } from '../../models/fileParser';
-import { getMonthNameFromIndex, modelReducer } from '../../utils/utils';
 
 import 'devextreme/dist/css/dx.light.css';
 
 function App() {
 	const [statementFile, setStatementFile] = useState([]);
 	const [monthRange, setMonthRange] = useState([0, 0]);
-
-	const isSelectionMultiple = monthRange[0] < monthRange[1];
-	
-	const dataSource = [
-		{
-			type: 'credit',
-			val: modelReducer(getCredits, statementFile),
-		},
-		{
-			type: 'debit',
-			val: modelReducer(getDebits, statementFile),
-		},
-	];
 
 	return (
 		<>
@@ -45,31 +23,7 @@ function App() {
 				</div>
 				<div className="column main">
 					<SummaryPanel statementFile={statementFile} monthRange={monthRange} />
-					<div>
-						<h2>
-							Charts for {getMonthNameFromIndex(monthRange[0])}
-							{isSelectionMultiple && " to " + getMonthNameFromIndex(monthRange[1])}
-						</h2>
-						<PieChart
-							id="pie"
-							type="pie"
-							title="CREDIT/DEBIT ratio"
-							palette="Soft Pastel"
-							dataSource={dataSource}
-						>
-							<Series argumentField="type">
-								<Label visible={true}>
-									<Connector visible={true} />
-								</Label>
-							</Series>
-							<Legend
-								margin={0}
-								verticalAlignment="top"
-								horizontalAlignment="right"
-							/>
-							<Tooltip enabled={true} />
-						</PieChart>
-					</div>
+					<ChartPanel statementFile={statementFile} monthRange={monthRange} />
 				</div>
 			</div>
 		</>
