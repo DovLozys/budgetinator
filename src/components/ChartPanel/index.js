@@ -7,10 +7,9 @@ import PieChart, {
 } from 'devextreme-react/pie-chart';
 
 import { getDebits, getCredits } from '../../models/fileParser';
-import { getMonthNameFromIndex, modelReducer } from '../../utils/utils';
+import { modelReducer } from '../../utils/utils';
 
-function ChartPanel({ statementFile, monthRange }) {
-	const isSelectionMultiple = monthRange[0] < monthRange[1];
+function ChartPanel({ statementFile }) {
 	const dataSource = [
 		{
 			type: 'credit',
@@ -25,8 +24,7 @@ function ChartPanel({ statementFile, monthRange }) {
 	return (
 		<div>
 			<h2>
-				Charts for {getMonthNameFromIndex(monthRange[0])}
-				{isSelectionMultiple && " to " + getMonthNameFromIndex(monthRange[1])}
+				Charts
 			</h2>
 			<PieChart
 				id="pie"

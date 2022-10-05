@@ -1,15 +1,11 @@
 import { getDebits, getCredits } from '../../models/fileParser';
-import { getMonthNameFromIndex, modelReducer } from '../../utils/utils';
+import { modelReducer } from '../../utils/utils';
 
-function SummaryPanel({ statementFile, monthRange }) {
-	const isSelectionMultiple = monthRange[0] < monthRange[1];
+function SummaryPanel({ statementFile }) {
 
 	return (
 		<div>
-			<h1>
-				Summary for {getMonthNameFromIndex(monthRange[0])}
-				{isSelectionMultiple && " to " + getMonthNameFromIndex(monthRange[1])}
-			</h1>
+			<h2>Statement summary</h2>
 			<p>Total debits: {modelReducer(getDebits, statementFile)}</p>
 			<p>Total credits: {modelReducer(getCredits, statementFile)}</p>
 		</div>
