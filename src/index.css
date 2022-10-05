@@ -22,6 +22,11 @@ h1, form {
 
 #file-selector {
 	float: right;
+	font-size: 1.5em;
+}
+
+input {
+	font-size: 1.2em;
 }
 
 div.row {
@@ -34,11 +39,11 @@ div.row {
 }
 
 .column.side {
-	width: 20%;
+	width: 30%;
 }
 
 .column.main {
-	width: 80%;
+	width: 70%;
 }
 
 @media screen and (max-width: 600px) {
