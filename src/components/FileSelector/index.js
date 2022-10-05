@@ -18,7 +18,7 @@ function FileSelector(props) {
 	}
 
 	return (
-		<label id="file-selector">Select a file:
+		<label id="file-selector">Select a statement file: <br />
 			<input type="file" onChange={onChangeHandler} />
 		</label>
 	);
