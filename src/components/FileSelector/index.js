@@ -22,7 +22,7 @@ function FileSelector(props) {
                     const date = new Date(arrayOfRows[i]['Date']);
                     if (transactionsByMonth[date.getMonth()] === undefined) {
                         transactionsByMonth[date.getMonth()] = {
-                            month: date.getMonth(),
+                            month: date.toLocaleString('default', { month: 'long' }),
                             entries: [arrayOfRows[i]]
                         }
                     } else {
@@ -31,9 +31,20 @@ function FileSelector(props) {
 				}
                 props.setMonthlyStatements(transactionsByMonth);
 
-                // TODO: populate monthlyTotals using transactionsByMonth
+                // populate monthlyTotals using transactionsByMonth
                 const totals = [];
-
+                transactionsByMonth.forEach((monthStatement) => {
+                    const data = {
+                        arg: monthStatement.month,
+                        val: monthStatement.entries.reduce((prev, entry) => {
+                            if (entry.Type === "CREDIT") return prev;
+                            return prev + entry.Amount;
+                        }, 0)
+                    }
+                    data.val = Math.round(data.val);
+                    totals.push(data);
+                })
+                props.setMonthlyTotals(totals);
             }
             reader.readAsArrayBuffer(event.target.files[0]);
         }
