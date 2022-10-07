@@ -9,6 +9,7 @@ function ChartPanel(props) {
 	if (props.statementFile.length === 0) {
 		return <><h2>Charts</h2><p>Select a statement file up top please.</p></>
 	}
+
 	return (
 		<>
 			<h2>
