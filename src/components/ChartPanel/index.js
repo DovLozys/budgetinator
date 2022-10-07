@@ -5,11 +5,16 @@ import PieChart, {
 	Label,
 	Connector
 } from 'devextreme-react/pie-chart';
+import Chart, {
+	// Label,
+	// Legend,
+	// Series
+} from 'devextreme-react/chart';
 
 import { getDebits, getCredits } from '../../models/fileParser';
 import { modelReducer } from '../../utils/utils';
 
-function ChartPanel({ statementFile }) {
+function ChartPanel({ statementFile, monthlyStatements, monthlyTotals }) {
 	const dataSource = [
 		{
 			type: 'credit',
@@ -45,6 +50,21 @@ function ChartPanel({ statementFile }) {
 				/>
 				<Tooltip enabled={true} />
 			</PieChart>
+			<br /><br />
+			<Chart
+				title="Monthly debits"
+				dataSource={monthlyTotals}
+				id="chart"
+			>
+				<Series type="bar">
+					<Label visible={true}>
+						<Connector visible={true} />
+					</Label>
+				</Series>
+				<Legend
+					visible={false}
+				/>
+			</Chart>
 		</div>
 	)
 }
