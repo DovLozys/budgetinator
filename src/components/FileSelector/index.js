@@ -1,27 +1,36 @@
 import { read, utils } from 'xlsx';
 
 function FileSelector(props) {
-	function onChangeHandler(event) {
-		event.preventDefault();
-		if (event.target.files) {
-			const reader = new FileReader();
-			reader.onload = (event) => {
-				const fileContents = event.target.result;
-				const workbook = read(fileContents, { type: "array" });
-				const sheetName = workbook.SheetNames[0];
-				const worksheet = workbook.Sheets[sheetName];
-				const arrayOfRows = utils.sheet_to_json(worksheet);
-				props.setStatementFile(arrayOfRows);
-			}
-			reader.readAsArrayBuffer(event.target.files[0]);
-		}
-	}
+    function onChangeHandler(event) {
+        event.preventDefault();
+        const transactionsByMonth = [[], [], [], [], [], [], [], [], [], [], [], []];
 
-	return (
-		<label id="file-selector">Select a statement file: <br />
-			<input type="file" onChange={onChangeHandler} />
-		</label>
-	);
+        if (event.target.files) {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                const fileContents = event.target.result;
+                const workbook = read(fileContents, { type: "array" });
+                const sheetName = workbook.SheetNames[0];
+                const worksheet = workbook.Sheets[sheetName];
+                const arrayOfRows = utils.sheet_to_json(worksheet);
+                props.setStatementFile(arrayOfRows);
+
+				for (let i = 0; i < arrayOfRows.length; i++) {
+					const date = new Date(arrayOfRows[i]['Date']);
+					transactionsByMonth[date.getMonth()].push(arrayOfRows[i]);
+				}
+            }
+            reader.readAsArrayBuffer(event.target.files[0]);
+        }
+
+        props.setMonthlyStatements(transactionsByMonth);
+    }
+
+    return (
+        <label id="file-selector">Select a statement file: <br />
+            <input type="file" onChange={onChangeHandler} />
+        </label>
+    );
 }
 
 export { FileSelector };

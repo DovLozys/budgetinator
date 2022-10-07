@@ -8,12 +8,13 @@ import 'devextreme/dist/css/dx.light.css';
 
 function App() {
 	const [statementFile, setStatementFile] = useState([]);
+	const [monthlyStatements, setMonthlyStatements] = useState([]);
 
 	return (
 		<>
 			<header>
 				<h1>Budgetinator</h1>
-				<FileSelector setStatementFile={setStatementFile} />
+				<FileSelector setStatementFile={setStatementFile}  setMonthlyStatements={setMonthlyStatements}/>
 			</header>
 			<div className="row">
 				<div className="column side">
