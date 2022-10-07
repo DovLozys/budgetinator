@@ -6,8 +6,11 @@ import Chart, {
 } from 'devextreme-react/chart';
 
 function ChartPanel(props) {
+	if (props.statementFile.length === 0) {
+		return <><h2>Charts</h2><p>Select a statement file up top please.</p></>
+	}
 	return (
-		<div>
+		<>
 			<h2>
 				Charts
 			</h2>
@@ -25,7 +28,7 @@ function ChartPanel(props) {
 					visible={false}
 				/>
 			</Chart>
-		</div>
+		</>
 	)
 }
 
