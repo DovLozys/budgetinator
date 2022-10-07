@@ -23,6 +23,7 @@ function FileSelector(props) {
 					if (transactionsByMonth[date.getMonth()] === undefined) {
 						transactionsByMonth[date.getMonth()] = {
 							month: date.toLocaleString('default', { month: 'long' }),
+							monthIndex: date.getMonth(),
 							entries: [arrayOfRows[i]]
 						};
 					} else {
@@ -39,7 +40,8 @@ function FileSelector(props) {
 						val: monthStatement.entries.reduce((prev, entry) => {
 							if (entry.Type === 'CREDIT') return prev;
 							return prev + entry.Amount;
-						}, 0)
+						}, 0),
+						monthIndex: monthStatement.monthIndex
 					};
 					data.val = Math.round(data.val);
 					totals.push(data);
