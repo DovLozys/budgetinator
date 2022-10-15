@@ -52,8 +52,6 @@ function ChartPanel(props) {
 				dragEnabled={false}
 				hideOnOutsideClick={true}
 				title={`Stats for ${currentMonth}`}
-				width={300}
-				height={280}
 			>
 				<Position
 					at="center"
