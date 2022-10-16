@@ -7,29 +7,29 @@ import { SummaryPanel } from '../SummaryPanel';
 import 'devextreme/dist/css/dx.light.css';
 
 function App() {
-	const [statementFile, setStatementFile] = useState([]);
+	const [fullStatement, setFullStatement] = useState([]);
 	const [monthlyStatements, setMonthlyStatements] = useState([]);
-	const [monthlyTotals, setMonthlyTotals] = useState([]);
+	const [monthlySpendingTotals, setMonthlySpendingTotals] = useState([]);
 
 	return (
 		<>
 			<header>
 				<h1>Budgetinator</h1>
 				<FileSelector
-					setStatementFile={setStatementFile}
+					setFullStatement={setFullStatement}
 					setMonthlyStatements={setMonthlyStatements}
-					setMonthlyTotals={setMonthlyTotals}
+					setMonthlySpendingTotals={setMonthlySpendingTotals}
 				/>
 			</header>
 			<div className="row">
 				<div className="column side">
-					<SummaryPanel statementFile={statementFile} />
+					<SummaryPanel fullStatement={fullStatement} />
 				</div>
 				<div className="column main">
 					<ChartPanel
-						statementFile={statementFile}
+						fullStatement={fullStatement}
 						monthlyStatements={monthlyStatements}
-						monthlyTotals={monthlyTotals}
+						monthlySpendingTotals={monthlySpendingTotals}
 					/>
 				</div>
 			</div>

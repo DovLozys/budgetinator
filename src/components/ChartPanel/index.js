@@ -1,7 +1,7 @@
-import { MonthlyBarChart } from '../MonthlyBarChart';
+import { MonthlySpendingBarChart } from '../MonthlySpendingBarChart';
 
 function ChartPanel(props) {
-	if (props.statementFile.length === 0) {
+	if (props.fullStatement.length === 0) {
 		return <><h2>Charts</h2><p>Select a statement file up top please.</p></>;
 	}
 
@@ -10,9 +10,9 @@ function ChartPanel(props) {
 			<h2>
 				Charts
 			</h2>
-			<MonthlyBarChart
+			<MonthlySpendingBarChart
 				monthlyStatements={props.monthlyStatements}
-				monthlyTotals={props.monthlyTotals}
+				monthlySpendingTotals={props.monthlySpendingTotals}
 			/>
 		</>
 	);

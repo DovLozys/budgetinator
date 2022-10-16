@@ -13,8 +13,8 @@ function FileSelector(props) {
 				const worksheet = workbook.Sheets[sheetName];
 				const arrayOfRows = utils.sheet_to_json(worksheet);
 				
-				// populate statementFile
-				props.setStatementFile(arrayOfRows);
+				// populate fullStatement
+				props.setFullStatement(arrayOfRows);
 				
 				// populate monthlyStatements
 				const transactionsByMonth = [];
@@ -32,7 +32,7 @@ function FileSelector(props) {
 				}
 				props.setMonthlyStatements(transactionsByMonth);
 
-				// populate monthlyTotals from transactionsByMonth
+				// populate monthlySpendingTotals from transactionsByMonth
 				const totals = [];
 				transactionsByMonth.forEach((monthStatement) => {
 					const data = {
@@ -46,7 +46,7 @@ function FileSelector(props) {
 					data.val = Math.round(data.val);
 					totals.push(data);
 				});
-				props.setMonthlyTotals(totals);
+				props.setMonthlySpendingTotals(totals);
 			}
 			reader.readAsArrayBuffer(event.target.files[0]);
 		}

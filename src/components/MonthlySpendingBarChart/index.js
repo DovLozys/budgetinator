@@ -8,7 +8,7 @@ import Chart, {
 } from 'devextreme-react/chart';
 import { Popup, Position } from 'devextreme-react/popup';
 
-function MonthlyBarChart(props) {
+function MonthlySpendingBarChart(props) {
 	const [popupVisible, setPopupVisible] = useState(false);
 	const [currentMonth, setCurrentMonth] = useState('');
 
@@ -26,7 +26,7 @@ function MonthlyBarChart(props) {
 		<>
 			<Chart
 				title="Monthly debits"
-				dataSource={props.monthlyTotals}
+				dataSource={props.monthlySpendingTotals}
 				onPointClick={pointClickHandler}
 				id="chart"
 			>
@@ -51,4 +51,4 @@ function MonthlyBarChart(props) {
 	);
 }
 
-export { MonthlyBarChart };
+export { MonthlySpendingBarChart };
