@@ -8,7 +8,7 @@ function SummaryPanel({ fullStatement }) {
 			<p>Total debits: {modelReducer(getDebits, fullStatement)}</p>
 			<p>Total credits: {modelReducer(getCredits, fullStatement)}</p>
 		</>
-	)
+	);
 }
 
 export { SummaryPanel };
