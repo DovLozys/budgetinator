@@ -10,7 +10,7 @@ import { Popup, Position } from 'devextreme-react/popup';
 
 function ChartPanel(props) {
 	const [popupVisible, setPopupVisible] = useState(false);
-	const [currentMonth, setCurrentMonth] = useState();
+	const [currentMonth, setCurrentMonth] = useState('');
 
 	if (props.statementFile.length === 0) {
 		return <><h2>Charts</h2><p>Select a statement file up top please.</p></>
@@ -23,7 +23,7 @@ function ChartPanel(props) {
 
 	function hidePopup() {
 		setPopupVisible(false);
-		setCurrentMonth();
+		setCurrentMonth('');
 	}
 
 	return (
