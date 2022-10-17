@@ -28,4 +28,10 @@ function getCredits(arrayOfRows) {
 	return arrayOfCredits;
 }
 
+/*
+TODO:
+	getCategories - gets all available categories from a statement (leisure, bills...)
+	getTransactionsInCategory - gets transactions in a specific category
+*/
+
 export { getCategories, getDebits, getCredits };
