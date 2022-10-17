@@ -5,6 +5,7 @@ function getCategories(arrayOfRows) {
 			arrayOfCategories.push(arrayOfRows[i]['Category']);
 		}
 	}
+
 	return arrayOfCategories;
 }
 
@@ -15,6 +16,7 @@ function getDebits(arrayOfRows) {
 			arrayOfDebits.push(arrayOfRows[i]['Amount']);
 		}
 	}
+
 	return arrayOfDebits;
 }
 
@@ -25,6 +27,7 @@ function getCredits(arrayOfRows) {
 			arrayOfCredits.push(arrayOfRows[i]['Amount']);
 		}
 	}
+
 	return arrayOfCredits;
 }
 
