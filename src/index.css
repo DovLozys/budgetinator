@@ -1,46 +1,47 @@
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-	margin: 0;
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-		'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-		sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-		monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }
 
 header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 div.row {
-	clear: both;
+  clear: both;
 }
 
 .column {
-	float: left;
-	padding: 10px;
+  float: left;
+  padding: 10px;
 }
 
 .column.side {
-	width: 30%;
+  width: 30%;
 }
 
 .column.main {
-	width: 70%;
+  width: 70%;
 }
 
 @media screen and (max-width: 600px) {
-	.column.side, .column.main {
-		width: 100%;
-	}
+  .column.side,
+  .column.main {
+    width: 100%;
+  }
 }
