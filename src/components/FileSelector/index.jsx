@@ -2,8 +2,6 @@ import { read, utils } from 'xlsx';
 
 function FileSelector(props) {
   function onChangeHandler(event) {
-    event.preventDefault();
-
     if (event.target.files) {
       const reader = new FileReader();
       reader.onload = (event) => {
