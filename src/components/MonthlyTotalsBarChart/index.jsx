@@ -8,7 +8,7 @@ import Chart, {
 } from 'devextreme-react/chart';
 import { Popup, Position } from 'devextreme-react/popup';
 
-function MonthlySpendingBarChart(props) {
+function MonthlyTotalsBarChart(props) {
   const [popupVisible, setPopupVisible] = useState(false);
   const [currentMonth, setCurrentMonth] = useState('');
 
@@ -39,7 +39,7 @@ function MonthlySpendingBarChart(props) {
         <CommonSeriesSettings
           argumentField="month"
           type="bar"
-          hoverMoode="allArgumentPoints"
+          hoverMode="allArgumentPoints"
           selectionMode="allArgumentPoints"
         >
           <Label visible={true} format={currencyFormat} />
@@ -72,4 +72,4 @@ function MonthlySpendingBarChart(props) {
   );
 }
 
-export { MonthlySpendingBarChart };
+export { MonthlyTotalsBarChart };

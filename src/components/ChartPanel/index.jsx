@@ -1,4 +1,4 @@
-import { MonthlySpendingBarChart } from '../MonthlySpendingBarChart';
+import { MonthlyTotalsBarChart } from '../MonthlyTotalsBarChart';
 
 function ChartPanel(props) {
   if (props.fullStatement.length === 0) {
@@ -13,7 +13,7 @@ function ChartPanel(props) {
   return (
     <>
       <h2>Charts</h2>
-      <MonthlySpendingBarChart
+      <MonthlyTotalsBarChart
         monthlyStatements={props.monthlyStatements}
         monthlyTransactionTotals={props.monthlyTransactionTotals}
       />

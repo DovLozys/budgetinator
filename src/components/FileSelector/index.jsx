@@ -30,7 +30,7 @@ function FileSelector(props) {
         }
         props.setMonthlyStatements(transactionsByMonth);
 
-        // populate monthlySpendingTotals from transactionsByMonth
+        // populate monthlyTransactionTotals from transactionsByMonth
         const totals = [];
         transactionsByMonth.forEach((monthStatement) => {
           const data = {
