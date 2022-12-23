@@ -9,7 +9,7 @@ import 'devextreme/dist/css/dx.light.css';
 function App() {
   const [fullStatement, setFullStatement] = useState([]);
   const [monthlyStatements, setMonthlyStatements] = useState([]);
-  const [monthlySpendingTotals, setMonthlySpendingTotals] = useState([]);
+  const [monthlyTransactionTotals, setMonthlyTransactionTotals] = useState([]);
 
   return (
     <>
@@ -18,7 +18,7 @@ function App() {
         <FileSelector
           setFullStatement={setFullStatement}
           setMonthlyStatements={setMonthlyStatements}
-          setMonthlySpendingTotals={setMonthlySpendingTotals}
+          setMonthlyTransactionTotals={setMonthlyTransactionTotals}
         />
       </header>
       <div className="row">
@@ -29,7 +29,7 @@ function App() {
           <ChartPanel
             fullStatement={fullStatement}
             monthlyStatements={monthlyStatements}
-            monthlySpendingTotals={monthlySpendingTotals}
+            monthlyTransactionTotals={monthlyTransactionTotals}
           />
         </div>
       </div>

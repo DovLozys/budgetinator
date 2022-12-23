@@ -3,8 +3,8 @@ import { useState } from 'react';
 import Chart, {
   Series,
   Label,
-  Connector,
   Legend,
+  CommonSeriesSettings,
 } from 'devextreme-react/chart';
 import { Popup, Position } from 'devextreme-react/popup';
 
@@ -14,7 +14,7 @@ function MonthlySpendingBarChart(props) {
 
   function pointClickHandler(info) {
     setPopupVisible(true);
-    setCurrentMonth(props.monthlyStatements[info.target.data.monthIndex].month);
+    setCurrentMonth(info.target.data.month);
   }
 
   function hidePopup() {
@@ -22,20 +22,39 @@ function MonthlySpendingBarChart(props) {
     setCurrentMonth('');
   }
 
+  const currencyFormat = {
+    style: 'currency',
+    currency: 'USD',
+    maximumFractionDigits: 0,
+  };
+
   return (
     <>
       <Chart
-        title="Monthly debits"
-        dataSource={props.monthlySpendingTotals}
-        onPointClick={pointClickHandler}
         id="chart"
+        title="Monthly cash flow"
+        dataSource={props.monthlyTransactionTotals}
+        onPointClick={pointClickHandler}
       >
-        <Series type="bar">
-          <Label visible={true}>
-            <Connector visible={true} />
-          </Label>
-        </Series>
-        <Legend visible={false} />
+        <CommonSeriesSettings
+          argumentField="month"
+          type="bar"
+          hoverMoode="allArgumentPoints"
+          selectionMode="allArgumentPoints"
+        >
+          <Label visible={true} format={currencyFormat} />
+        </CommonSeriesSettings>
+
+        <Series
+          argumentField="month"
+          valueField="credits"
+          name="Incoming"
+        ></Series>
+        <Series valueField="debits" name="Outgoing"></Series>
+        <Legend
+          verticalAlignment="bottom"
+          horizontalAlignment="center"
+        ></Legend>
       </Chart>
       <Popup
         visible={popupVisible}

@@ -15,7 +15,7 @@ function ChartPanel(props) {
       <h2>Charts</h2>
       <MonthlySpendingBarChart
         monthlyStatements={props.monthlyStatements}
-        monthlySpendingTotals={props.monthlySpendingTotals}
+        monthlyTransactionTotals={props.monthlyTransactionTotals}
       />
     </>
   );

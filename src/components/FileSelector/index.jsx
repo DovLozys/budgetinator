@@ -34,18 +34,25 @@ function FileSelector(props) {
         const totals = [];
         transactionsByMonth.forEach((monthStatement) => {
           const data = {
-            arg: monthStatement.month,
-            val: monthStatement.entries.reduce((prev, entry) => {
+            month: monthStatement.month,
+            credits: monthStatement.entries.reduce((prev, entry) => {
               if (entry.Type === 'CREDIT') return prev;
               return prev + entry.Amount;
             }, 0),
+            debits: Math.abs(
+              monthStatement.entries.reduce((prev, entry) => {
+                if (entry.Type === 'DEBIT') return prev;
+                return prev + entry.Amount;
+              }, 0)
+            ),
             monthIndex: monthStatement.monthIndex,
           };
           data.val = Math.round(data.val);
           totals.push(data);
         });
-        props.setMonthlySpendingTotals(totals);
+        props.setMonthlyTransactionTotals(totals);
       };
+
       reader.readAsArrayBuffer(event.target.files[0]);
     }
   }
