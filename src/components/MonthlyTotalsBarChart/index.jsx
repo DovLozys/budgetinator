@@ -99,8 +99,8 @@ function MonthlyTotalsBarChart(props) {
         {categories.map((category) => {
           return (
             <p key={crypto.randomUUID()}>
-              {category.category}: {category.numberOfTransactions} transactions
-              at the cost of{' '}
+              {category.numberOfTransactions} transactions in{' '}
+              {category.category}. Total value:{' '}
               {new Intl.NumberFormat(currencyFormat).format(
                 category.totalAmount
               )}
