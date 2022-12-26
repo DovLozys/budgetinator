@@ -22,29 +22,33 @@ function MonthlyTotalsBarChart(props) {
     // false: push an object for that category
     // obj structure could be:
     // {category: 'Electronics', totalAmount: 10, numberOfTransactions: 1}
+    const cats = [];
+
     for (const entry of props.monthlyStatements[point.target.data.monthIndex]
       .entries) {
-      const catsCopy = [...categories];
-      const i = catsCopy.findIndex((cat) => cat.category === entry.Category);
+      const i = cats.findIndex((cat) => {
+        return cat.category === entry.Category;
+      });
 
       if (i > -1) {
         console.log('cat found');
+        cats[i] = {
+          ...cats[i],
+          totalAmount: cats[i].totalAmount + entry.Amount,
+          numberOfTransactions: cats[i].numberOfTransactions + 1,
+        };
       } else {
-        console.log('cat not found');
+        const obj = {
+          category: entry.Category,
+          totalAmount: entry.Amount,
+          numberOfTransactions: 1,
+        };
+        cats.push(obj);
+        console.log('cat not found, creating a new entry for it');
       }
-
-      setCategories(catsCopy);
     }
 
-    console.log(
-      'Number of transactions for current month: ',
-      props.monthlyStatements[point.target.data.monthIndex].entries.length
-    );
-
-    console.log(
-      'First category: ',
-      props.monthlyStatements[point.target.data.monthIndex].entries[0].Category
-    );
+    setCategories(cats);
 
     setPopupVisible(true);
   }
@@ -89,6 +93,7 @@ function MonthlyTotalsBarChart(props) {
           horizontalAlignment="center"
         ></Legend>
       </Chart>
+
       <Popup
         visible={popupVisible}
         onHiding={hidePopup}
@@ -97,9 +102,18 @@ function MonthlyTotalsBarChart(props) {
         title={`Stats for ${currentMonth}`}
       >
         <Position at="center" my="center" />
-        <p>
+        <h1>
           Month: <span>{currentMonth}</span>
-        </p>
+        </h1>
+        <h3>Number of unique categories: {categories.length}</h3>
+        {categories.map((category) => {
+          return (
+            <p key={crypto.randomUUID()}>
+              {category.category}: {category.numberOfTransactions} transactions,
+              at the cost of {category.totalAmount}
+            </p>
+          );
+        })}
       </Popup>
     </>
   );
