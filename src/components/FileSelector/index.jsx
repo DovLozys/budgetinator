@@ -47,7 +47,7 @@ function FileSelector(props) {
             ),
             monthIndex: monthStatement.monthIndex,
           };
-          data.val = Math.round(data.val);
+
           totals.push(data);
         });
         props.setMonthlyTransactionTotals(totals);
