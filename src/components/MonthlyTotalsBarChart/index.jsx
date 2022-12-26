@@ -12,18 +12,16 @@ function MonthlyTotalsBarChart(props) {
   const [popupVisible, setPopupVisible] = useState(false);
   const [currentMonth, setCurrentMonth] = useState('');
   const [categories, setCategories] = useState([]);
+  const currencyFormat = {
+    style: 'currency',
+    currency: 'GBP',
+    maximumFractionDigits: 0,
+  };
 
   function pointClickHandler(point) {
     setCurrentMonth(point.target.data.month);
-    // get transactions for the month that what was clicked on
-    // construct array of objects to store different categories for that month (`categories` state)
-    // if arr.some((row) => row.check.stuff(category?))
-    // true: add .Amount to a total for that category, noOfTx++
-    // false: push an object for that category
-    // obj structure could be:
-    // {category: 'Electronics', totalAmount: 10, numberOfTransactions: 1}
-    const cats = [];
 
+    const cats = [];
     for (const entry of props.monthlyStatements[point.target.data.monthIndex]
       .entries) {
       const i = cats.findIndex((cat) => {
@@ -31,7 +29,6 @@ function MonthlyTotalsBarChart(props) {
       });
 
       if (i > -1) {
-        console.log('cat found');
         cats[i] = {
           ...cats[i],
           totalAmount: cats[i].totalAmount + entry.Amount,
@@ -44,10 +41,8 @@ function MonthlyTotalsBarChart(props) {
           numberOfTransactions: 1,
         };
         cats.push(obj);
-        console.log('cat not found, creating a new entry for it');
       }
     }
-
     setCategories(cats);
 
     setPopupVisible(true);
@@ -58,12 +53,6 @@ function MonthlyTotalsBarChart(props) {
     setCategories([]);
     setCurrentMonth('');
   }
-
-  const currencyFormat = {
-    style: 'currency',
-    currency: 'GBP',
-    maximumFractionDigits: 0,
-  };
 
   return (
     <>
@@ -110,7 +99,10 @@ function MonthlyTotalsBarChart(props) {
           return (
             <p key={crypto.randomUUID()}>
               {category.category}: {category.numberOfTransactions} transactions,
-              at the cost of {category.totalAmount}
+              at the cost of{' '}
+              {new Intl.NumberFormat(currencyFormat).format(
+                category.totalAmount
+              )}
             </p>
           );
         })}
