@@ -43,6 +43,7 @@ function MonthlyTotalsBarChart(props) {
         cats.push(obj);
       }
     }
+    cats.sort((a, b) => b.numberOfTransactions - a.numberOfTransactions);
     setCategories(cats);
 
     setPopupVisible(true);
@@ -98,7 +99,7 @@ function MonthlyTotalsBarChart(props) {
         {categories.map((category) => {
           return (
             <p key={crypto.randomUUID()}>
-              {category.category}: {category.numberOfTransactions} transactions,
+              {category.category}: {category.numberOfTransactions} transactions
               at the cost of{' '}
               {new Intl.NumberFormat(currencyFormat).format(
                 category.totalAmount
