@@ -11,20 +11,53 @@ import { Popup, Position } from 'devextreme-react/popup';
 function MonthlyTotalsBarChart(props) {
   const [popupVisible, setPopupVisible] = useState(false);
   const [currentMonth, setCurrentMonth] = useState('');
+  const [categories, setCategories] = useState([]);
 
-  function pointClickHandler(info) {
+  function pointClickHandler(point) {
+    setCurrentMonth(point.target.data.month);
+    // get transactions for the month that what was clicked on
+    // construct array of objects to store different categories for that month (`categories` state)
+    // if arr.some((row) => row.check.stuff(category?))
+    // true: add .Amount to a total for that category, noOfTx++
+    // false: push an object for that category
+    // obj structure could be:
+    // {category: 'Electronics', totalAmount: 10, numberOfTransactions: 1}
+    for (const entry of props.monthlyStatements[point.target.data.monthIndex]
+      .entries) {
+      const catsCopy = [...categories];
+      const i = catsCopy.findIndex((cat) => cat.category === entry.Category);
+
+      if (i > -1) {
+        console.log('cat found');
+      } else {
+        console.log('cat not found');
+      }
+
+      setCategories(catsCopy);
+    }
+
+    console.log(
+      'Number of transactions for current month: ',
+      props.monthlyStatements[point.target.data.monthIndex].entries.length
+    );
+
+    console.log(
+      'First category: ',
+      props.monthlyStatements[point.target.data.monthIndex].entries[0].Category
+    );
+
     setPopupVisible(true);
-    setCurrentMonth(info.target.data.month);
   }
 
   function hidePopup() {
     setPopupVisible(false);
+    setCategories([]);
     setCurrentMonth('');
   }
 
   const currencyFormat = {
     style: 'currency',
-    currency: 'USD',
+    currency: 'GBP',
     maximumFractionDigits: 0,
   };
 
