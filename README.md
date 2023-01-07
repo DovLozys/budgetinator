@@ -20,3 +20,4 @@ You may also see any lint errors in the console.
   - year -> month -> fine details about selected month (categories, merchants..)
 - keep track of multiple uploaded files
   - have a selector for each year/statement file
+- have support for different statement formats/banks
