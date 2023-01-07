@@ -19,3 +19,4 @@ You may also see any lint errors in the console.
 - finish up rough drill down:
   - year -> month -> fine details about selected month (categories, merchants..)
 - keep track of multiple uploaded files
+  - have a selector for each year/statement file
