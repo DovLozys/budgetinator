@@ -41,3 +41,4 @@ If you'd like to contribute, please fork the repository and open a pull request 
 - keep track of multiple uploaded files
   - have a selector for each year/statement file
 - have support for different statement formats/banks
+  - currently supports AMEX exports
