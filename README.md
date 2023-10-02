@@ -8,7 +8,7 @@ Ever wanted an app that just does what you need and nothing else? Yep, same here
 
 ## 🚀 Quick Start
 
-Navigate to [`*WIP*`](#) and upload your .csv file!
+Navigate to [budgetinator.pages.dev](https://budgetinator.pages.dev/) and upload your .csv file!
 
 You'll get a nice bar chart to click through.
 
