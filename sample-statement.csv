@@ -1,0 +1,46 @@
+Date,Type,Amount,Category,Description
+2024-01-05,DEBIT,-45.50,Groceries,Tesco Supermarket
+2024-01-08,DEBIT,-12.99,Transport,Bus Pass Monthly
+2024-01-10,CREDIT,2500.00,Salary,Monthly Salary
+2024-01-12,DEBIT,-850.00,Rent,Monthly Rent Payment
+2024-01-15,DEBIT,-89.99,Utilities,Electricity Bill
+2024-01-18,DEBIT,-25.00,Entertainment,Cinema Tickets
+2024-01-20,DEBIT,-67.80,Groceries,Sainsbury's
+2024-01-22,DEBIT,-15.50,Coffee,Costa Coffee
+2024-01-25,DEBIT,-120.00,Healthcare,Dentist Visit
+2024-01-28,DEBIT,-200.00,Shopping,Online Shopping
+2024-02-02,DEBIT,-38.90,Groceries,Local Market
+2024-02-05,DEBIT,-75.00,Dining,Restaurant Dinner
+2024-02-08,CREDIT,150.00,Freelance,Design Work
+2024-02-10,CREDIT,2500.00,Salary,Monthly Salary
+2024-02-12,DEBIT,-850.00,Rent,Monthly Rent Payment
+2024-02-15,DEBIT,-95.40,Utilities,Gas Bill
+2024-02-18,DEBIT,-45.00,Transport,Uber Rides
+2024-02-20,DEBIT,-55.75,Groceries,Whole Foods
+2024-02-22,DEBIT,-30.00,Entertainment,Streaming Services
+2024-02-25,DEBIT,-180.00,Shopping,Clothing Purchase
+2024-02-28,DEBIT,-20.00,Coffee,Starbucks
+2024-03-01,DEBIT,-42.30,Groceries,Corner Shop
+2024-03-05,DEBIT,-125.00,Healthcare,GP Visit
+2024-03-08,DEBIT,-60.00,Dining,Takeaway Orders
+2024-03-10,CREDIT,2500.00,Salary,Monthly Salary
+2024-03-12,DEBIT,-850.00,Rent,Monthly Rent Payment
+2024-03-15,DEBIT,-110.80,Utilities,Water Bill
+2024-03-18,DEBIT,-35.50,Transport,Train Ticket
+2024-03-20,DEBIT,-78.90,Groceries,Supermarket Weekly Shop
+2024-03-22,DEBIT,-90.00,Entertainment,Concert Tickets
+2024-03-25,DEBIT,-250.00,Shopping,Electronics Purchase
+2024-03-28,DEBIT,-18.50,Coffee,Local Cafe
+2024-03-30,CREDIT,75.00,Cashback,Credit Card Cashback
+2024-04-02,DEBIT,-49.20,Groceries,Weekly Shopping
+2024-04-05,DEBIT,-65.00,Dining,Brunch with Friends
+2024-04-08,DEBIT,-40.00,Transport,Monthly Travel Card
+2024-04-10,CREDIT,2500.00,Salary,Monthly Salary
+2024-04-12,DEBIT,-850.00,Rent,Monthly Rent Payment
+2024-04-15,DEBIT,-88.60,Utilities,Internet Bill
+2024-04-18,DEBIT,-22.50,Coffee,Coffee Shop Chain
+2024-04-20,DEBIT,-135.75,Shopping,Grocery & Household Items
+2024-04-22,DEBIT,-45.00,Entertainment,Movie Night
+2024-04-25,DEBIT,-200.00,Healthcare,Specialist Consultation
+2024-04-28,DEBIT,-85.90,Dining,Weekend Meals
+2024-04-30,CREDIT,100.00,Bonus,Performance Bonus
