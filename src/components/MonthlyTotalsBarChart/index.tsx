@@ -8,41 +8,59 @@ import Chart, {
 } from 'devextreme-react/chart';
 import { Popup, Position } from 'devextreme-react/popup';
 
-function MonthlyTotalsBarChart(props) {
+import { MonthlyStatement, MonthlyTransactionTotals } from '../../types';
+
+interface MonthlyTotalsBarChartProps {
+  monthlyStatements: (MonthlyStatement | undefined)[];
+  monthlyTransactionTotals: MonthlyTransactionTotals[];
+}
+
+interface CategoryData {
+  category: string;
+  totalAmount: number;
+  numberOfTransactions: number;
+}
+
+function MonthlyTotalsBarChart(props: MonthlyTotalsBarChartProps) {
   const [popupVisible, setPopupVisible] = useState(false);
   const [currentMonth, setCurrentMonth] = useState('');
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState<CategoryData[]>([]);
+  
   const currencyFormat = {
-    style: 'currency',
+    style: 'currency' as const,
     currency: 'GBP',
     maximumFractionDigits: 0,
   };
 
-  function pointClickHandler(point) {
+  function pointClickHandler(point: any) {
     setCurrentMonth(point.target.data.month);
 
-    const cats = [];
-    for (const entry of props.monthlyStatements[point.target.data.monthIndex]
-      .entries) {
-      const i = cats.findIndex((cat) => {
-        return cat.category === entry.Category;
-      });
+    const cats: CategoryData[] = [];
+    const monthStatement = props.monthlyStatements[point.target.data.monthIndex];
+    
+    if (monthStatement) {
+      for (const entry of monthStatement.entries) {
+        const i = cats.findIndex((cat) => {
+          return cat.category === entry.Category;
+        });
 
-      if (i > -1) {
-        cats[i] = {
-          ...cats[i],
-          totalAmount: cats[i].totalAmount + entry.Amount,
-          numberOfTransactions: cats[i].numberOfTransactions + 1,
-        };
-      } else {
-        const obj = {
-          category: entry.Category,
-          totalAmount: entry.Amount,
-          numberOfTransactions: 1,
-        };
-        cats.push(obj);
+        if (i > -1) {
+          cats[i] = {
+            ...cats[i],
+            totalAmount: cats[i].totalAmount + entry.Amount,
+            numberOfTransactions: cats[i].numberOfTransactions + 1,
+          };
+        } else {
+          const obj: CategoryData = {
+            category: entry.Category,
+            totalAmount: entry.Amount,
+            numberOfTransactions: 1,
+          };
+          cats.push(obj);
+        }
       }
     }
+    
     cats.sort((a, b) => b.numberOfTransactions - a.numberOfTransactions);
     setCategories(cats);
 
@@ -76,12 +94,12 @@ function MonthlyTotalsBarChart(props) {
           argumentField="month"
           valueField="credits"
           name="Incoming"
-        ></Series>
-        <Series valueField="debits" name="Outgoing"></Series>
+        />
+        <Series valueField="debits" name="Outgoing" />
         <Legend
           verticalAlignment="bottom"
           horizontalAlignment="center"
-        ></Legend>
+        />
       </Chart>
 
       <Popup
@@ -101,7 +119,7 @@ function MonthlyTotalsBarChart(props) {
             <p key={crypto.randomUUID()}>
               {category.numberOfTransactions} transactions in{' '}
               {category.category}. Total value:{' '}
-              {new Intl.NumberFormat(currencyFormat).format(
+              {new Intl.NumberFormat('en-GB', currencyFormat).format(
                 category.totalAmount
               )}
             </p>
