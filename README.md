@@ -1,16 +1,27 @@
 # Budgetinator
 
-A React single-page application for parsing CSV/XLS bank statements. Crunches them like a terminator and shows nice graphs and charts of yearly/monthly cash flows.
-
-# Motivation
-
-Ever wanted an app that just does what you need and nothing else? Yep, same here. The goal was to just be able to feed it a .csv file that I backup from my bank of choice once a year and see a historical view of what's what, all done locally in the browser. I tried a couple off-the-shelf 'budgeting' apps, and I was frustrated with all their bells and whistles - network requests to integrate with a 3rd party API, real-time notifications, gamification - I just needed cold hard facts (or numbers) and so budgetinator was born.
+Budgetinator is a React single-page application for parsing CSV/XLS bank 
+statements. It helps visualize yearly and monthly cash flows with interactive 
+graphs and charts.
 
 ## 🚀 Quick Start
 
-Navigate to [budgetinator.pages.dev](https://budgetinator.pages.dev/) and upload your .csv file!
+- Head to [budgetinator.pages.dev](https://budgetinator.pages.dev/) and upload 
+  your `.csv` file!
+- Instantly see interactive bar charts for your financial data.
 
-You'll get a nice bar chart to click through.
+## Motivation
+
+The aim of this project is to provide a simple tool for viewing and analyzing 
+bank statement data. Users can upload a CSV file exported from their bank and 
+view their financial data in a clear, visual format.
+
+## Features
+
+- Parse CSV/XLS bank statements (currently supports AMEX exports)
+- Visualize income/expenses with graphs and charts
+- Drill down: year → month → detailed breakdown (categories, merchants, etc.)
+- Works entirely in your browser—no data leaves your device
 
 ## 🤝 Contributing
 
@@ -26,19 +37,15 @@ cd budgetinator
 ```bash
 npm start
 ```
-By default it will be running on [localhost:5173](http://localhost:5173)
+By default, the app runs at [localhost:5173](http://localhost:5173)
 
 ### Submit a pull request
 
-If you'd like to contribute, please fork the repository and open a pull request to the `main` branch.
+If you'd like to contribute, please fork the repository and open a pull request 
+to the `main` branch.
 
+## To Do
 
-
-## To do
-
-- finish up rough drill down:
-  - year -> month -> fine details about selected month (categories, merchants..)
-- keep track of multiple uploaded files
-  - have a selector for each year/statement file
-- have support for different statement formats/banks
-  - currently supports AMEX exports
+- Finish up detailed drill-down: year → month → categories/merchants
+- Support for multiple uploaded files (selector for each year/statement)
+- More statement formats and bank support
