@@ -8,13 +8,24 @@ import Chart, {
 } from 'devextreme-react/chart';
 import { Popup, Position } from 'devextreme-react/popup';
 
-function MonthlySpendingBarChart(props) {
+import { MonthlyStatement, MonthlyTransactionTotals } from '../../types';
+
+interface MonthlySpendingBarChartProps {
+	monthlyStatements: (MonthlyStatement | undefined)[];
+	monthlySpendingTotals: MonthlyTransactionTotals[];
+}
+
+function MonthlySpendingBarChart(props: MonthlySpendingBarChartProps) {
 	const [popupVisible, setPopupVisible] = useState(false);
 	const [currentMonth, setCurrentMonth] = useState('');
 
-	function pointClickHandler(info) {
+	function pointClickHandler(info: any) {
 		setPopupVisible(true);
-		setCurrentMonth(props.monthlyStatements[info.target.data.monthIndex].month);
+		const data = info.target.data as MonthlyTransactionTotals;
+		const monthStatement = props.monthlyStatements[data.monthIndex];
+		if (monthStatement) {
+			setCurrentMonth(monthStatement.month);
+		}
 	}
 
 	function hidePopup() {
@@ -30,7 +41,7 @@ function MonthlySpendingBarChart(props) {
 				onPointClick={pointClickHandler}
 				id="chart"
 			>
-				<Series type="bar">
+				<Series valueField="debits" argumentField="month" type="bar">
 					<Label visible={true}>
 						<Connector visible={true} />
 					</Label>

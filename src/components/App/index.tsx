@@ -6,10 +6,12 @@ import { SummaryPanel } from '../SummaryPanel';
 
 import 'devextreme/dist/css/dx.light.css';
 
+import { Transaction, MonthlyStatement, MonthlyTransactionTotals } from '../../types';
+
 function App() {
-	const [fullStatement, setFullStatement] = useState([]);
-	const [monthlyStatements, setMonthlyStatements] = useState([]);
-	const [monthlySpendingTotals, setMonthlySpendingTotals] = useState([]);
+	const [fullStatement, setFullStatement] = useState<Transaction[]>([]);
+	const [monthlyStatements, setMonthlyStatements] = useState<(MonthlyStatement | undefined)[]>([]);
+	const [monthlySpendingTotals, setMonthlySpendingTotals] = useState<MonthlyTransactionTotals[]>([]);
 
 	return (
 		<>
