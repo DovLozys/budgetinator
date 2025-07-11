@@ -1,4 +1,5 @@
 import { MonthlyTotalsBarChart } from '../MonthlyTotalsBarChart';
+import { CategoryAnalytics } from '../CategoryAnalytics';
 import { Transaction, MonthlyStatement, MonthlyTransactionTotals } from '../../types';
 
 interface ChartPanelProps {
@@ -20,6 +21,9 @@ function ChartPanel(props: ChartPanelProps) {
 			<MonthlyTotalsBarChart
 				monthlyStatements={props.monthlyStatements}
 				monthlyTransactionTotals={props.monthlyTransactionTotals}
+			/>
+			<CategoryAnalytics
+				transactions={props.fullStatement}
 			/>
 		</>
 	);

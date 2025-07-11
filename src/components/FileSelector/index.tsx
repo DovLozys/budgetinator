@@ -1,5 +1,6 @@
 import { read, utils } from 'xlsx';
 import { Transaction, MonthlyStatement, MonthlyTransactionTotals } from '../../types';
+import { smartCategorizer } from '../../models/smartCategorizer';
 
 interface FileSelectorProps {
 	setFullStatement: (statement: Transaction[]) => void;
@@ -17,22 +18,25 @@ function FileSelector(props: FileSelectorProps) {
 				const sheetName = workbook.SheetNames[0];
 				const worksheet = workbook.Sheets[sheetName];
 				const arrayOfRows = utils.sheet_to_json(worksheet) as Transaction[];
-				
+
+				// Apply smart categorization
+				const categorizedRows = smartCategorizer.categorizeTransactions(arrayOfRows);
+
 				// populate fullStatement
-				props.setFullStatement(arrayOfRows);
-				
+				props.setFullStatement(categorizedRows);
+
 				// populate monthlyStatements
 				const transactionsByMonth: (MonthlyStatement | undefined)[] = [];
-				for (let i = 0; i < arrayOfRows.length; i++) {
-					const date = new Date(arrayOfRows[i]['Date']);
+				for (let i = 0; i < categorizedRows.length; i++) {
+					const date = new Date(categorizedRows[i]['Date']);
 					if (transactionsByMonth[date.getMonth()] === undefined) {
 						transactionsByMonth[date.getMonth()] = {
 							month: date.toLocaleString('default', { month: 'long' }),
 							monthIndex: date.getMonth(),
-							entries: [arrayOfRows[i]]
+							entries: [categorizedRows[i]]
 						};
 					} else {
-						transactionsByMonth[date.getMonth()]!.entries.push(arrayOfRows[i]);
+						transactionsByMonth[date.getMonth()]!.entries.push(categorizedRows[i]);
 					}
 				}
 				props.setMonthlyStatements(transactionsByMonth);

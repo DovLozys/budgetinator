@@ -21,6 +21,28 @@ header {
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px dotted black;
+  padding: 10px 20px;
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.category-manager-toggle {
+  padding: 8px 16px;
+  background: #2196F3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.category-manager-toggle:hover {
+  background: #0b7dda;
 }
 
 div.row {
@@ -41,6 +63,7 @@ div.row {
 }
 
 @media screen and (max-width: 600px) {
+
   .column.side,
   .column.main {
     width: 100%;
